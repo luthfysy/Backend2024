@@ -1,23 +1,17 @@
-// Import Express JS
+// import express
 const express = require("express");
-
-// Create an Express JS instance
+// import router
+const router = require("./routes/api.js");
+// buat object express
 const app = express();
 
-/**
- * Define a route
- * Method GET accepts two parameters:
- * 1. The route
- * 2. A callback function that accepts two parameters:
- *  - Request = req
- *  - Response = res
- */
+// use middleware
+app.use(express.json());
+app.use(express.urlencoded());
 
-app.get("/", (req, res) => {
-  res.send("Hello Express JS");
-});
+app.use(router);
 
-// Start the server
+// mendefinisikan port
 app.listen(3000, () => {
-  console.log("Server is running on http://localhost:3000");
+  console.log("Server running at http://localhost:3000");
 });
